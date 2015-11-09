@@ -1,0 +1,13 @@
+<div class="actions">
+{{we-action-create-btn resourceName req}}
+</div>
+
+<div class="portfolio-find">
+  {{#we-grid items=data cols=3}}
+    {{#each featuredImage}}
+      {{#link-to-record record=../this}}
+        {{we-image this 'large' class="img-thumbnail"}}
+      {{/link-to-record}}
+    {{/each}}
+  {{/we-grid}}
+</div>
