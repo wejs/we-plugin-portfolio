@@ -1,14 +1,11 @@
-# we-plugin-portfolio
+# We.js portfolio plugin
 
-> [write something about your plugin here]
-
-# API
-
+> Add the portfolio CRUD to your project
 
 ## Links
 
 > * We.js site: http://wejs.org
 
-#Copyright and license
+## License
 
-Copyright 2013-2015 [your name] <[your email@email]> and contributors , under [the MIT license](LICENSE).
+[MIT license](LICENSE.md).
