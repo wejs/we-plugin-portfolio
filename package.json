@@ -1,6 +1,6 @@
 {
   "name": "we-plugin-portfolio",
-  "description": "We.js we-plugin-portfolio plugin",
+  "description": "We.js portfolio plugin",
   "version": "0.3.0",
   "main": "plugin.js",
   "scripts": {
@@ -21,6 +21,16 @@
   },
   "publishConfig": {
     "registry": "http://registry.npmjs.org"
+  },
+  "keywords": [
+    "we.js",
+    "wejs",
+    "plugin",
+    "portfolio"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:wejs/we-plugin-portfolio.git"
   },
   "license": "MIT"
 }
