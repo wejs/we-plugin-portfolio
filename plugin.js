@@ -35,10 +35,10 @@ module.exports = function loadPlugin(projectPath, Plugin) {
           var img = res.locals.data.featuredImage[0];
 
           res.locals.metatag +=
-            '<meta property="og:image" content="'+hostname+img.urls.large+'" />'+
+            '<meta property="og:image" content="'+img.urls.large+'" />'+
             '<meta property="og:image:type" content="'+img.mime+'" />'+
-            '<meta property="og:image:width" content="'+img.width+'" />'+
-            '<meta property="og:image:height" content="'+img.height+'" />';
+            '<meta property="og:image:width" content="'+we.config.upload.image.styles.large.width+'" />'+
+            '<meta property="og:image:height" content="'+we.config.upload.image.styles.large.height+'" />';
         }
 
         if (res.locals.data.tags && res.locals.data.tags.length) {
