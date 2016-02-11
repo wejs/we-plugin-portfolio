@@ -1,3 +1,6 @@
 {
-  "name": "portfolio"
+  "name": "portfolio",
+    "findOne": {
+    "metatagHandler": "portifolioFindOne"
+  }
 }
