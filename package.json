@@ -1,13 +1,11 @@
 {
   "name": "we-plugin-portfolio",
   "description": "We.js portfolio plugin",
-  "version": "0.3.2",
+  "version": "1.0.0",
   "main": "plugin.js",
   "scripts": {
-    "test": "NODE_ENV=test LOG_LV=info ./node_modules/.bin/mocha test/bootstrap.js test/**/*.test.js",
-    "prepublish": "npm prune"
+    "test": "NODE_ENV=test LOG_LV=info ./node_modules/.bin/mocha test/bootstrap.js test/**/*.test.js"
   },
-  "dependencies": {},
   "devDependencies": {
     "fs-extra": "^0.18.2",
     "mocha": "^2.2.5",
@@ -19,18 +17,15 @@
     "we-theme-site-wejs": "wejs/we-theme-site-wejs",
     "we-test-tools": "wejs/we-test-tools"
   },
-  "publishConfig": {
-    "registry": "http://registry.npmjs.org"
-  },
   "keywords": [
-    "we.js",
-    "wejs",
-    "plugin",
-    "portfolio"
+    "wejs-plugin"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:wejs/we-plugin-portfolio.git"
-  },
-  "license": "MIT"
+  "repository": "wejs/we-plugin-portfolio",
+  "license": "MIT",
+  "author": "Alberto Souza <contato@albertosouza.net>",
+  "wejs": {
+    "dependencies": {
+      "we-plugin-user": true
+    }
+  }
 }
