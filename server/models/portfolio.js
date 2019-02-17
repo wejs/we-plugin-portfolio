@@ -7,9 +7,7 @@
  */
 
 module.exports = function (we) {
-  var model = {
-    // define you model here
-    // see http://docs.sequelizejs.com/en/latest/docs/models-definition
+  const model = {
     definition: {
       title: {
         type: we.db.Sequelize.STRING,
@@ -70,27 +68,21 @@ module.exports = function (we) {
       // Class methods for use with: we.db.models.[yourmodel].[method]
       classMethods: {},
       // record method for use with record.[method]
-      instanceMethods: {},
-      // Sequelize hooks
-      // See http://docs.sequelizejs.com/en/latest/api/hooks
+      instanceMethods: {
+        setPublishDates() {
+          if (this.published) {
+            this.publishedAt = new Date();
+          } else {
+            this.publishedAt = null;
+          }
+        }
+      },
       hooks: {
-        createUpdate: function createUpdate(record, opts, done) {
-          if (record.published) {
-            record.publishedAt = new Date();
-          } else {
-            record.publishedAt = null;
-          }
-
-          done();
+        beforeCreate(record) {
+          record.setPublishDates();
         },
-        beforeUpdate: function beforeUpdate(record, opts, done) {
-          if (record.published) {
-            record.publishedAt = new Date();
-          } else {
-            record.publishedAt = null;
-          }
-
-          done();
+        beforeUpdate(record) {
+          record.setPublishDates();
         }
       }
     }
