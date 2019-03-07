@@ -31,6 +31,17 @@ module.exports = function (we) {
         type: we.db.Sequelize.DATE,
         formFieldType: null, // hide this field
         allowNull: true
+      },
+      highlighted: {
+        type: we.db.Sequelize.INTEGER,
+        allowNull: false,
+        defaultValue: 0,
+        formFieldType: null
+      },
+      showInLists: {
+        type: we.db.Sequelize.BOOLEAN,
+        defaultValue: true,
+        formFieldType: null
       }
     },
     // Associations
@@ -41,6 +52,7 @@ module.exports = function (we) {
     options: {
       // title field, for default title record pages
       titleField: 'title',
+      tableName: 'portfolios',
 
       termFields: {
         tags: {
