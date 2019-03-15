@@ -4,6 +4,13 @@
 module.exports = function loadPlugin(projectPath, Plugin) {
   const plugin = new Plugin(__dirname);
 
+  plugin.setResource({
+    name: 'portfolio',
+      findOne: {
+      metatagHandler: 'portifolioFindOne'
+    }
+  });
+
   plugin.events.on('we:after:load:plugins', function (we) {
     if (!we.router.metatag) return;
 

@@ -44,13 +44,10 @@ module.exports = function (we) {
         formFieldType: null
       }
     },
-    // Associations
-    // see http://docs.sequelizejs.com/en/latest/docs/associations
     associations: {
       creator: { type: 'belongsTo', model: 'user' }
     },
     options: {
-      // title field, for default title record pages
       titleField: 'title',
       tableName: 'portfolios',
 
@@ -76,25 +73,25 @@ module.exports = function (we) {
       fileFields: {
         attachment: { formFieldMultiple: true }
       },
-
-      // Class methods for use with: we.db.models.[yourmodel].[method]
       classMethods: {},
-      // record method for use with record.[method]
       instanceMethods: {
-        setPublishDates() {
-          if (this.published) {
-            this.publishedAt = new Date();
-          } else {
-            this.publishedAt = null;
+        setPublishDates(record) {
+          if (record.published && !record.publishedAt) {
+            record.publishedAt = new Date();
           }
         }
       },
       hooks: {
+        beforeValidate(record) {
+          if (!record.highlighted) {
+            record.highlighted = 0;
+          }
+        },
         beforeCreate(record) {
-          record.setPublishDates();
+          record.setPublishDates(record);
         },
         beforeUpdate(record) {
-          record.setPublishDates();
+          record.setPublishDates(record);
         }
       }
     }
