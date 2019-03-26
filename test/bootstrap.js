@@ -71,8 +71,6 @@ function getSessionConfigs() {
   const SQLiteStore = require('connect-sqlite3')(session);
   const configs = {};
 
-  // change host and port to your redis cfgs:
-
   configs.session = {
     secret: '12345678910',
     store: new SQLiteStore({
