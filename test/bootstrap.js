@@ -6,7 +6,7 @@ const projectPath = process.cwd(),
 let we;
 
 before(function(callback) {
-  testTools.copyLocalSQLiteConfigIfNotExitst(projectPath, callback);
+  testTools.copyLocalSQLiteConfigIfNotExists(projectPath, callback);
 });
 
 before(function(callback) {
@@ -21,13 +21,6 @@ before(function(callback) {
     port: 9800,
     hostname: 'http://localhost:9800',
     appName: 'We test',
-    session: getSessionConfigs(),
-    database: {
-      test: {
-        dialect: 'sqlite',
-        storage: path.join(projectPath, 'database.sqlite')
-      }
-    },
     i18n: {
       directory: path.join(__dirname, 'locales'),
       updateFiles: true
@@ -64,23 +57,3 @@ after(function (callback) {
 after(function () {
   we.exit(process.exit);
 });
-
-
-function getSessionConfigs() {
-  const session = require('express-session');
-  const SQLiteStore = require('connect-sqlite3')(session);
-  const configs = {};
-
-  configs.session = {
-    secret: '12345678910',
-    store: new SQLiteStore({
-      table: 's_session',
-      db: 'sessionsDB',
-      dir: projectPath
-    }),
-    resave: false, // don't save session if unmodified
-    saveUninitialized: false
-  };
-
-  return configs.session;
-}

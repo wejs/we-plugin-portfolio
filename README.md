@@ -15,3 +15,7 @@ we i we-plugin-portfolio
 ## License
 
 Under [the MIT license](https://github.com/wejs/we/blob/master/LICENSE.md).
+
+## Sponsored by
+
+- Linky: https://linkysystems.com

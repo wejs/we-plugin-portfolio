@@ -19,7 +19,6 @@ function updates() {
       .then( ()=> {
         we.log.info('Done project update v1.1.0');
         done();
-        return null;
       })
       .catch(done);
     }
