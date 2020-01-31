@@ -5,6 +5,23 @@
  * @description :: Contains logic for handling requests.
  */
 module.exports = {
+ /**
+   * Default find action
+   *
+   * @param  {Object} req express.js request
+   * @param  {Object} res express.js response
+   *
+   * @api [get] /portfolio
+   * description: "Find/query portfolio list"
+   * responses:
+   *   "200":
+   *     description: "Find/query portfolio success"
+   *     schema:
+   *       type: object
+   *       properties:
+   *         portfolio:
+   *           $ref: "#/definitions/portfolio"
+   */
   find(req, res) {
     if (!req.we.acl.canStatic('access_portfolio_unpublished', req.userRoleNames)) {
       res.locals.query.where.published = true;
@@ -40,6 +57,25 @@ module.exports = {
     .catch(res.queryError);
   },
 
+  /**
+   * Default findOne action
+   *
+   * Record is preloaded in context loader by default and is avaible as res.locals.data
+   *
+   * @param  {Object} req express.js request
+   * @param  {Object} res express.js response
+   *
+   * @api [get] /portfolio/{portfolioId}
+   * description: "Find one portfolio by id"
+   * responses:
+   *   "200":
+   *     description: "Find portfolio by id success"
+   *     schema:
+   *       type: object
+   *       properties:
+   *         portfolio:
+   *           $ref: "#/definitions/portfolio"
+   */
   findOne(req, res, next) {
     if (!res.locals.data) return next();
 
@@ -65,6 +101,18 @@ module.exports = {
    *
    * @param  {Object} req express.js request
    * @param  {Object} res express.js response
+   *
+   * @api [get] /portfolio/count
+   * description: "Count portfolio"
+   * responses:
+   *   "200":
+   *     description: "Count portfolio success"
+   *     schema:
+   *       type: object
+   *       properties:
+   *         count:
+   *           type: number
+   *           example: 10
    */
   count(req, res) {
     return res.locals.Model
@@ -81,6 +129,17 @@ module.exports = {
    *
    * @param  {Object} req express.js request
    * @param  {Object} res express.js response
+   *
+   * @api [post] /portfolio
+   * description: "Create one portfolio"
+   * responses:
+   *   "201":
+   *     description: "Create one portfolio"
+   *     schema:
+   *       type: object
+   *       properties:
+   *         portfolio:
+   *           $ref: "#/definitions/portfolio"
    */
   create(req, res) {
     if (!res.locals.template) {
@@ -111,6 +170,7 @@ module.exports = {
       res.redirect('/admin/#/portfolio/create');
     }
   },
+
   /**
    * Edit, edit page and update action
    *
@@ -118,6 +178,17 @@ module.exports = {
    *
    * @param  {Object} req express.js request
    * @param  {Object} res express.js response
+   *
+   * @api [update|put] /portfolio/{portfolioId}
+   * description: "Update one portfolio"
+   * responses:
+   *   "200":
+   *     description: "Update one by id portfolio success"
+   *     schema:
+   *       type: object
+   *       properties:
+   *         portfolio:
+   *           $ref: "#/definitions/portfolio"
    */
   edit(req, res) {
     if (!res.locals.template) {
@@ -150,11 +221,18 @@ module.exports = {
       res.redirect('/admin/#/portfolio/'+record.id);
     }
   },
+
   /**
    * Delete and delete action
    *
    * @param  {Object} req express.js request
    * @param  {Object} res express.js response
+   *
+   * @api [delete] /portfolio/{portfolioId}
+   * description: "Delete one portfolio by id"
+   * responses:
+   *   "204":
+   *     description: "Delete one portfolio record by id success"
    */
   delete(req, res) {
     if (!res.locals.template) {
