@@ -12,7 +12,7 @@
     "connect-sqlite3": "^0.9.11",
     "fs-extra": "^8.1.0",
     "istanbul": "0.4.5",
-    "mocha": "7.0.1",
+    "mocha": "10.2.0",
     "rimraf": "^3.0.1",
     "sinon": "8.1.1",
     "supertest": "4.0.2",
